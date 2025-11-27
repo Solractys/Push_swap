@@ -13,7 +13,7 @@ Push Swap é um programa que ordena uma determinada [pilha](https://en.wikipedia
 
 ### Fase 1: Fundação
 
-- [ ] Implementar uma pilha usando listas encadeadas
+- [x] Implementar uma pilha usando listas encadeadas
 - [ ] Implementar o CRUD da stack
 - [ ] Implementar as 11 operações da Push Swap
 - [ ] Testar cada uma isoladamente

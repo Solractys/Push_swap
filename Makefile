@@ -1,7 +1,7 @@
 NAME        = pushswap
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g
 CFLAGS     += -Iincludes -Iincludes/gnl -Iincludes/ft_printf
 
 SRCS        = $(shell find src -name "*.c")

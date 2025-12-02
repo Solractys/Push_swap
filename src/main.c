@@ -60,6 +60,7 @@ void	swap(t_stack **stack)
 	push(stack, scd_top_item->number);
 }
 
+
 void	swap_both(t_stack **stack_A, t_stack **stack_B)
 {
 	if (*stack_A == NULL || *stack_B == NULL)
@@ -122,7 +123,7 @@ void	reverse_rotate_both(t_stack **stack_A, t_stack **stack_B)
 	reverse_rotate(stack_A);
 	reverse_rotate(stack_B);
 }
-// ERROR HANDLING
+// ERROR HANDLING (refatorar)
 int	validate_input(char *inputs)
 {
 	int y = 0;
@@ -143,7 +144,7 @@ int	validate_input(char *inputs)
 		}
 	return (1);
 }
-
+// refatorar 
 t_stack	*parse_values(char **input)
 {
 	int x = 1;
@@ -155,18 +156,23 @@ t_stack	*parse_values(char **input)
 	}
 	return (stack);
 }
+
+// refatorar 
 int	check_three(t_stack **stack)
 {
 	int	top = (*stack)->number;
 	int	mid = (*stack)->next->number;
 	int down = (*stack)->next->next->number;
-
+  
+  if (top == mid && top == down)
+    return (1);
+  if (top == mid && top < down)
+    return (1);
 	if (top < mid && top < down)
 		return (1);
 	else
 		return (0);
 }
-
 void	sort_three(t_stack **stack)
 {
 	int top, mid, down = 0;
@@ -176,16 +182,57 @@ void	sort_three(t_stack **stack)
 
 	if (top > mid && top > down)
 		rotate(stack);
-	else if (top > mid && top < down)
-		swap(stack);
-	else if (top < mid && top < down)
-		return ;
+	if (top > mid && top < down)
+    swap(stack);
+  if (top == mid)
+    reverse_rotate(stack);
+  if (top == down)
+    reverse_rotate(stack);
+  return ;
+}
+
+// não precisa 
+int check_two(t_stack **stack)
+{
+  int top = (*stack)->number;
+  int down = (*stack)->next->number;
+  if (top < down || top == down)
+    return (1);
+  return (0);
+}
+void sort_two(t_stack **stack)
+{
+  if (stack == NULL)
+    return ;
+  int n1 = (*stack)->number;
+  int n2 = (*stack)->next->number;
+  if (n1 == n2)
+    return ;
+  if (n1 > n2)
+    swap(stack);
 }
 
 void sort_func(t_stack **stack)
 {
-	while (check_three(stack) == 0)
-			sort_three(stack);
+  if (stack == NULL)
+    return ;
+  int count = 0;
+  t_stack *temp = *stack;
+  while (temp != NULL)
+  {
+    count++;
+    temp = temp->next;
+  }
+  if (count == 2)
+  {
+    while (check_two(stack) == 0)
+        sort_two(stack);
+  }
+  else if (count == 3)
+  {
+    while (check_three(stack) == 0)
+        sort_three(stack);
+  }
 }
 
 int	main(int argc, char **argv)
@@ -212,7 +259,7 @@ int	main(int argc, char **argv)
 	ft_printf("\n");
 	sort_func(&stack);
 	show_stack(stack);
-
+ 
 
     // PUSH MOVE
 // 	t_stack    *stack_B = NULL;

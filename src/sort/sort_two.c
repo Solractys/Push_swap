@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_two.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+int	check_two(t_stack **stack)
 {
-	int		x;
-	t_stack	*stack;
+	int	top;
+	int	down;
 
-	x = 1;
-	if (argc < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	while (argv[x] != NULL)
-	{
-		if (!validate_input(argv[x]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
-		x++;
-	}
-	stack = NULL;
-	stack = parse_values(argv);
-	show_stack(stack);
-	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
+	top = (*stack)->number;
+	down = (*stack)->next->number;
+	if (top < down || top == down)
+		return (1);
 	return (0);
+}
+
+void	sort_two(t_stack **stack)
+{
+	int	n1;
+	int	n2;
+
+	if (stack == NULL)
+		return ;
+	n1 = (*stack)->number;
+	n2 = (*stack)->next->number;
+	if (n1 == n2)
+		return ;
+	if (n1 > n2)
+		swap(stack);
 }

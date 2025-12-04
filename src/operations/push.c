@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	push_to(t_stack **stack_A, t_stack **stack_B)
 {
-	int		x;
-	t_stack	*stack;
+	t_stack	*temp;
 
-	x = 1;
-	if (argc < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	while (argv[x] != NULL)
-	{
-		if (!validate_input(argv[x]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
-		x++;
-	}
-	stack = NULL;
-	stack = parse_values(argv);
-	show_stack(stack);
-	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
-	return (0);
+	if (stack_A == NULL)
+		return ;
+	temp = *stack_A;
+	*stack_A = (*stack_A)->next;
+	temp->next = *stack_B;
+	*stack_B = temp;
 }

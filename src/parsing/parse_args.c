@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_values.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+t_stack	*parse_values(char **input)
 {
 	int		x;
 	t_stack	*stack;
 
 	x = 1;
-	if (argc < 2)
+	stack = NULL;
+	while (input[x])
 	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	while (argv[x] != NULL)
-	{
-		if (!validate_input(argv[x]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
+		push(&stack, ft_atoi(input[x]));
 		x++;
 	}
-	stack = NULL;
-	stack = parse_values(argv);
-	show_stack(stack);
-	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
-	return (0);
+	return (stack);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+#include <stdint.h>
 
-int	main(int argc, char **argv)
+int	check_three(t_stack **stack)
 {
-	int		x;
-	t_stack	*stack;
+	int	top;
+	int	mid;
+	int	down;
 
-	x = 1;
-	if (argc < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
+	top = (*stack)->number;
+	mid = (*stack)->next->number;
+	down = (*stack)->next->next->number;
+	if (top == mid && top == down)
+		return (1);
+	if (top == mid && top < down)
+		return (1);
+	if (top < mid && top < down)
+		return (1);
+	else
 		return (0);
-	}
-	while (argv[x] != NULL)
-	{
-		if (!validate_input(argv[x]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
-		x++;
-	}
-	stack = NULL;
-	stack = parse_values(argv);
-	show_stack(stack);
-	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
-	return (0);
+}
+
+void	sort_three(t_stack **stack)
+{
+	int	top;
+	int	mid;
+	int	down;
+
+	top = (*stack)->number;
+	mid = (*stack)->next->number;
+	down = (*stack)->next->next->number;
+	if (top > mid && top > down)
+		rotate(stack);
+	if (top > mid && top < down)
+		swap(stack);
+	if (top == mid)
+		reverse_rotate(stack);
+	if (top == down)
+		reverse_rotate(stack);
+	return ;
 }

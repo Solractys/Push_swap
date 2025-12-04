@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+t_stack	*create(int number)
 {
-	int		x;
-	t_stack	*stack;
+	t_stack	*node;
 
-	x = 1;
-	if (argc < 2)
+	node = ft_calloc(sizeof(t_stack), 1);
+	node->number = number;
+	node->next = NULL;
+	return (node);
+}
+
+void	push(t_stack **stack, int number)
+{
+	t_stack	*new_node;
+
+	new_node = create(number);
+	new_node->next = *stack;
+	*stack = new_node;
+}
+
+t_stack	*pop(t_stack **stack)
+{
+	t_stack	*temp;
+
+	if (*stack == NULL)
+		return (NULL);
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->next = NULL;
+	return (temp);
+}
+
+void	show_stack(t_stack *node)
+{
+	t_stack	*temp;
+
+	temp = node;
+	while (temp != NULL)
 	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
+		ft_printf("\t\t[ %d ]\n", temp->number);
+		temp = temp->next;
 	}
-	while (argv[x] != NULL)
-	{
-		if (!validate_input(argv[x]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
-		x++;
-	}
-	stack = NULL;
-	stack = parse_values(argv);
-	show_stack(stack);
-	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
-	return (0);
 }

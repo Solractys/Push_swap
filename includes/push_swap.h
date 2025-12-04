@@ -18,6 +18,18 @@ void	show_stack(t_stack *node);
 void	swap(t_stack **node);
 void	push_to(t_stack **org, t_stack **dest);
 void	rotate(t_stack **node);
+void	rotate_both(t_stack **stack_A, t_stack **stack_B);
 void	reverse_rotate(t_stack **stack);
+void	reverse_rotate_both(t_stack **stack_A, t_stack **stack_B);
+
+t_stack	*parse_values(char **input);
+int	validate_input(char *inputs);
+
+
+int check_two(t_stack **stack);
+void sort_two(t_stack **stack);
+int	check_three(t_stack **stack);
+void	sort_three(t_stack **stack);
+void sort_func(t_stack **stack);
 
 #endif

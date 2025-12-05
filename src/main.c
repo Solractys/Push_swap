@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	int		x;
 	t_stack	*stack;
-
+	
 	x = 1;
 	if (argc < 2)
 	{
@@ -34,9 +34,11 @@ int	main(int argc, char **argv)
 	}
 	stack = NULL;
 	stack = parse_values(argv);
+	t_stack	*stack_b = NULL;
+	index_stack(stack);
+	push_all(&stack, &stack_b);
 	show_stack(stack);
 	ft_printf("\n");
-	sort_func(&stack);
-	show_stack(stack);
+	show_stack(stack_b);
 	return (0);
 }

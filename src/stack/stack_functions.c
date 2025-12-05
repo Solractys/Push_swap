@@ -50,6 +50,7 @@ void	show_stack(t_stack *node)
 	temp = node;
 	while (temp != NULL)
 	{
+		ft_printf("indeex: %d", temp->index);
 		ft_printf("\t\t[ %d ]\n", temp->number);
 		temp = temp->next;
 	}

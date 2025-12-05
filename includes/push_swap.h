@@ -7,6 +7,7 @@
 typedef struct s_stack
 {
 	int		number;
+	int		index;
 	struct s_stack	*next;
 }	t_stack;
 // CRUD STACK
@@ -31,5 +32,16 @@ void sort_two(t_stack **stack);
 int	check_three(t_stack **stack);
 void	sort_three(t_stack **stack);
 void sort_func(t_stack **stack);
+
+// index system
+int	*create_sorted_array(t_stack *stack, int size);
+void	assign_indices(t_stack *stack, int *sorted_arrat, int size);
+int	count_stack(t_stack *stack);
+void	index_stack(t_stack *stack);
+
+// PUSH TO B
+int	find_min_index(t_stack *stack);
+int	should_rotate(t_stack *stack, int size);
+void	push_all(t_stack **stack_a, t_stack **stack_b);
 
 #endif

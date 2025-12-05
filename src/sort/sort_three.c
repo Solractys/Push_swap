@@ -32,30 +32,34 @@ int	check_three(t_stack **stack)
 		return (0);
 }
 
-void	sort_three(t_stack **stack)
+void sort_three(t_stack **stack)
 {
-	int	top;
-	int	mid;
-	int	down;
+    int a = (*stack)->index;
+    int b = (*stack)->next->index;
+    int c = (*stack)->next->next->index;
 
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	top = (*stack)->index;
-	mid = (*stack)->next->index;
-	down = (*stack)->next->next->index;
-	if (top > mid && top > down)
-	{
-		rotate(stack);
-		if (mid > down)
-			swap(stack);
-	}
-	else if (mid > top && mid > down)
-	{
-		reverse_rotate(stack);
-		if (top > mid)
-			swap(stack);
-	}
-	else if (top > mid)
-		swap(stack);
-	return ;
+    if (a > b && a > c)
+    {
+        rotate(stack);
+        ft_printf("ra\n");
+        a = (*stack)->index;
+        b = (*stack)->next->index;
+        c = (*stack)->next->next->index;
+    }
+
+    if (b > a && b > c)
+    {
+        reverse_rotate(stack);
+        ft_printf("rra\n");
+        a = (*stack)->index;
+        b = (*stack)->next->index;
+        c = (*stack)->next->next->index;
+    }
+
+    if (a > b)
+    {
+        swap(stack);
+        ft_printf("sa\n");
+    }
 }
+

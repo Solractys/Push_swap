@@ -148,16 +148,19 @@ void	push_all(t_stack **stack_a, t_stack **stack_b)
 		if ((*stack_a)->index < median)
 		{
 			push_to(stack_a, stack_b);
+			ft_printf("pb\n");
 			to_push--;
 		}
 		else if (should_rotate(*stack_a, size))
 		{
 			rotate(stack_a);
+			ft_printf("ra\n");
 		}
 		else
 		{
 			push_to(stack_a, stack_b);
 			to_push--;
+			ft_printf("pb\n");
 		}
 	}
 }
@@ -306,16 +309,18 @@ t_stack	*find_cheapest(t_stack *stack_b)
 	return (cheapest);
 }
 
-void	rotate_by_cost(t_stack **stack, int cost)
+void	rotate_by_cost(t_stack **stack, int cost, char name)
 {
 	while (cost > 0)
 	{
 		rotate(stack);
+		ft_printf("r%c\n", name);
 		cost--;
 	}
 	while (cost < 0)
 	{
 		reverse_rotate(stack);
+		ft_printf("rr%c\n", name);
 		cost++;
 	}
 }
@@ -325,12 +330,14 @@ void	rotate_both_by_cost(t_stack **stack_a, t_stack **stack_b, int *cost_a, int 
 	while (*cost_a > 0 && *cost_b > 0)
 	{
 		rotate_both(stack_a, stack_b);
+		ft_printf("rr\n");
 		(*cost_a)--;
 		(*cost_b)--;
 	}
 	while (*cost_a < 0 && *cost_b < 0)
 	{
 		reverse_rotate_both(stack_a, stack_b);
+		ft_printf("rrr\n");
 		(*cost_a)++;
 		(*cost_b)++;
 	}
@@ -347,9 +354,10 @@ void	execute_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 	cost_b = cheapest->cost_b;
 	if (cost_a != 0 && cost_b != 0)
 		rotate_both_by_cost(stack_a, stack_b, &cost_a, &cost_b);
-	rotate_by_cost(stack_a, cost_a);
-	rotate_by_cost(stack_b, cost_b);
+	rotate_by_cost(stack_a, cost_a, 'a');
+	rotate_by_cost(stack_b, cost_b, 'b');
 	push_to(stack_b, stack_a);
+	ft_printf("pa\n");
 }
 
 void	push_back_to_a(t_stack **stack_a, t_stack **stack_b)
@@ -373,17 +381,19 @@ void	final_rotate(t_stack **stack_a)
 	size = count_stack(*stack_a);
 	if (min_position <= size / 2)
 	{
-		while (min_position > 0)
+		while (min_position > 0 && (*stack_a)->index != 0)
 		{
 			rotate(stack_a);
+			ft_printf("ra\n");
 			min_position--;
 		}
 	}
 	else
 	{
-		while (min_position < size)
+		while (min_position < size && (*stack_a)->index != 0)
 		{
 			reverse_rotate(stack_a);
+			ft_printf("rra\n");
 			min_position++;
 		}
 	}
@@ -393,6 +403,7 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	index_stack(*stack_a);
 	push_all(stack_a, stack_b);
+	sort_three(stack_a);
 	push_back_to_a(stack_a, stack_b);
 	final_rotate(stack_a);
 }

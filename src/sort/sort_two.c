@@ -36,5 +36,5 @@ void	sort_two(t_stack **stack)
 	if (n1 == n2)
 		return ;
 	if (n1 > n2)
-		swap(stack);
+		swap(stack, 'a');
 }

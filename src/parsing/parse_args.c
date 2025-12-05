@@ -15,14 +15,18 @@
 t_stack	*parse_values(char **input)
 {
 	int		x;
+	int count;
 	t_stack	*stack;
 
-	x = 1;
+	count = 0;
 	stack = NULL;
-	while (input[x])
+	while (input[count])
+		count++;
+	x = count - 1;
+	while (x >= 1)
 	{
 		push(&stack, ft_atoi(input[x]));
-		x++;
+		x--;
 	}
 	return (stack);
 }

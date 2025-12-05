@@ -61,7 +61,7 @@ void	find_targets(t_stack **stack_a, t_stack **stack_b);
 void	calculate_costs(t_stack **stack_a, t_stack **stack_b);
 int	calculate_total_cost(t_stack *element);
 t_stack	*find_cheapest(t_stack *stack_b);
-void	rotate_by_cost(t_stack **stack, int cost);
+void	rotate_by_cost(t_stack **stack, int cost, char name);
 void	rotate_both_by_cost(t_stack **stack_a, t_stack **stack_b, int *cost_a, int *cost_b);
 void	execute_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 void	push_back_to_a(t_stack **stack_a, t_stack **stack_b);

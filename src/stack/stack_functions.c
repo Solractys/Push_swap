@@ -18,6 +18,10 @@ t_stack	*create(int number)
 
 	node = ft_calloc(sizeof(t_stack), 1);
 	node->number = number;
+	node->position = 0;
+	node->cost_a = 0;
+	node->cost_b = 0;
+	node->target_position = 0;
 	node->next = NULL;
 	return (node);
 }
@@ -43,15 +47,24 @@ t_stack	*pop(t_stack **stack)
 	return (temp);
 }
 
-void	show_stack(t_stack *node)
+void	show_stack(t_stack *node, int stack_id)
 {
 	t_stack	*temp;
 
 	temp = node;
 	while (temp != NULL)
 	{
-		ft_printf("indeex: %d", temp->index);
-		ft_printf("\t\t[ %d ]\n", temp->number);
+		if (stack_id == 1)
+		{
+			ft_printf("STACK A -> ");
+			ft_printf("\nnumber:%d | index: %d | position: %d\n", temp->number, temp->index, temp->position);
+		}
+		else if (stack_id == 2)
+		{
+			ft_printf("STACK B -> ");
+			ft_printf("\nnumber:%d | index: %d | position: %d | target_postion: %d | cost_b: %d | cost_a: %d \n",
+			 temp->number, temp->index, temp->position, temp->target_position, temp->cost_b, temp->cost_a);
+		}
 		temp = temp->next;
 	}
 }

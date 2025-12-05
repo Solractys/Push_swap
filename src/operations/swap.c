@@ -15,16 +15,17 @@
 void	swap(t_stack **stack)
 {
 	t_stack	*top_item;
-	t_stack	*scd_top_item;
+	t_stack	*second;
 
 	if (stack == NULL)
 		return ;
 	if ((*stack)->next == NULL)
 		return ;
-	top_item = pop(stack);
-	scd_top_item = pop(stack);
-	push(stack, top_item->number);
-	push(stack, scd_top_item->number);
+	top_item = *stack;
+	second = (*stack)->next;
+	top_item->next = second->next;
+	second->next = top_item;
+	*stack = second;
 }
 
 void	swap_both(t_stack **stack_A, t_stack **stack_B)

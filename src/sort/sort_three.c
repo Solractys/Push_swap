@@ -19,9 +19,9 @@ int	check_three(t_stack **stack)
 	int	mid;
 	int	down;
 
-	top = (*stack)->number;
-	mid = (*stack)->next->number;
-	down = (*stack)->next->next->number;
+	top = (*stack)->index;
+	mid = (*stack)->next->index;
+	down = (*stack)->next->next->index;
 	if (top == mid && top == down)
 		return (1);
 	if (top == mid && top < down)
@@ -38,16 +38,24 @@ void	sort_three(t_stack **stack)
 	int	mid;
 	int	down;
 
-	top = (*stack)->number;
-	mid = (*stack)->next->number;
-	down = (*stack)->next->next->number;
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	top = (*stack)->index;
+	mid = (*stack)->next->index;
+	down = (*stack)->next->next->index;
 	if (top > mid && top > down)
+	{
 		rotate(stack);
-	if (top > mid && top < down)
+		if (mid > down)
+			swap(stack);
+	}
+	else if (mid > top && mid > down)
+	{
+		reverse_rotate(stack);
+		if (top > mid)
+			swap(stack);
+	}
+	else if (top > mid)
 		swap(stack);
-	if (top == mid)
-		reverse_rotate(stack);
-	if (top == down)
-		reverse_rotate(stack);
 	return ;
 }

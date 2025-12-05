@@ -35,10 +35,24 @@ int	main(int argc, char **argv)
 	stack = NULL;
 	stack = parse_values(argv);
 	t_stack	*stack_b = NULL;
+
 	index_stack(stack);
 	push_all(&stack, &stack_b);
-	show_stack(stack);
+	ft_printf("1 ETAPA:\n");
+	show_stack(stack, 1);
+	show_stack(stack_b, 2);
+
+	ft_printf("2 ETAPA:\n");
+	sort_three(&stack);
+	show_stack(stack, 1);
+
+	ft_printf("3 ETAPA:\n");
+	push_back_to_a(&stack, &stack_b);
+	show_stack(stack, 1);
+
+	ft_printf("4 ETAPA:\n");
+	final_rotate(&stack);
 	ft_printf("\n");
-	show_stack(stack_b);
+	show_stack(stack, 1);
 	return (0);
 }

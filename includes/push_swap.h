@@ -1,20 +1,25 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "gnl/get_next_line.h"
-#include "ft_printf/ft_printf.h"
+# include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
+# define INT_MAX 2147483647
 
 typedef struct s_stack
 {
 	int		number;
 	int		index;
+	int		position;
+	int		cost_a;
+	int		cost_b;
+	int		target_position;
 	struct s_stack	*next;
 }	t_stack;
 // CRUD STACK
 t_stack	*create(int number);
 void	push(t_stack **node, int number);
 t_stack	*pop(t_stack **node);
-void	show_stack(t_stack *node);
+void	show_stack(t_stack *node, int stack_id);
 // MOVEMENTS
 void	swap(t_stack **node);
 void	push_to(t_stack **org, t_stack **dest);
@@ -44,4 +49,22 @@ int	find_min_index(t_stack *stack);
 int	should_rotate(t_stack *stack, int size);
 void	push_all(t_stack **stack_a, t_stack **stack_b);
 
+// TURK ALGO
+void	update_position(t_stack *stack);
+void	update_positions(t_stack **stack_a, t_stack **stack_b);
+
+
+int	find_min_position(t_stack *stack);
+int	find_target_position(t_stack *stack, int b_index);
+void	find_targets(t_stack **stack_a, t_stack **stack_b);
+
+void	calculate_costs(t_stack **stack_a, t_stack **stack_b);
+int	calculate_total_cost(t_stack *element);
+t_stack	*find_cheapest(t_stack *stack_b);
+void	rotate_by_cost(t_stack **stack, int cost);
+void	rotate_both_by_cost(t_stack **stack_a, t_stack **stack_b, int *cost_a, int *cost_b);
+void	execute_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+void	push_back_to_a(t_stack **stack_a, t_stack **stack_b);
+void	final_rotate(t_stack **stack_a);
+void	turk_sort(t_stack **stack_a, t_stack **stack_b);
 #endif

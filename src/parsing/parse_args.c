@@ -15,7 +15,7 @@
 t_stack	*parse_values(char **input)
 {
 	int		x;
-	int count;
+	int		count;
 	t_stack	*stack;
 
 	count = 0;

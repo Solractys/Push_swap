@@ -16,7 +16,8 @@ int	main(int argc, char **argv)
 {
 	int		x;
 	t_stack	*stack;
-	
+	t_stack	*stack_b;
+
 	x = 1;
 	if (argc < 2)
 	{
@@ -34,7 +35,7 @@ int	main(int argc, char **argv)
 	}
 	stack = NULL;
 	stack = parse_values(argv);
-	t_stack	*stack_b = NULL;
+	stack_b = NULL;
 	turk_sort(&stack, &stack_b);
 	return (0);
 }

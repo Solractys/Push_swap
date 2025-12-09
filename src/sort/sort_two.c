@@ -6,7 +6,7 @@
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 07:28:04 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/01 22:21:24 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/08 15:08:05 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ void	sort_two(t_stack **stack)
 	if (n1 == n2)
 		return ;
 	if (n1 > n2)
-		swap(stack, 'a');
+	{
+		swap(stack);
+		ft_printf("sa\n");
+	}
 }

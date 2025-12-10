@@ -21,7 +21,7 @@ long	*create_sorted_array(t_stack *stack, int size)
 	int		temp;
 
 	temp = 0;
-	array = malloc(sizeof(int) * size);
+	array = malloc(sizeof(long) * size);
 	if (array == NULL)
 		return (NULL);
 	current = stack;

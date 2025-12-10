@@ -12,11 +12,11 @@
 
 #include "../../includes/push_swap.h"
 
-int	*create_sorted_array(t_stack *stack, int size)
+long	*create_sorted_array(t_stack *stack, int size)
 {
 	int		i;
 	int		j;
-	int		*array;
+	long		*array;
 	t_stack	*current;
 	int		temp;
 
@@ -52,7 +52,7 @@ int	*create_sorted_array(t_stack *stack, int size)
 	return (array);
 }
 
-void	assign_indices(t_stack *stack, int *sorted_arrat, int size)
+void	assign_indices(t_stack *stack, long *sorted_array, int size)
 {
 	int		i;
 	t_stack	*current;
@@ -63,7 +63,7 @@ void	assign_indices(t_stack *stack, int *sorted_arrat, int size)
 		i = 0;
 		while (i < size)
 		{
-			if (current->number == sorted_arrat[i])
+			if (current->number == sorted_array[i])
 			{
 				current->index = i;
 				break ;
@@ -91,8 +91,8 @@ int	count_stack(t_stack *stack)
 
 void	index_stack(t_stack *stack)
 {
-	int	*sorted_array;
-	int	size;
+	long	*sorted_array;
+	int		size;
 
 	size = count_stack(stack);
 	sorted_array = create_sorted_array(stack, size);

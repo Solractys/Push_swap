@@ -26,8 +26,8 @@ int	check_two(t_stack **stack)
 
 void	sort_two(t_stack **stack)
 {
-	int	n1;
-	int	n2;
+	long	n1;
+	long	n2;
 
 	if (stack == NULL)
 		return ;

@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 	}
 	stack = NULL;
 	stack = parse_values(argv);
+	if (stack == NULL)
+		return (0);
 	stack_b = NULL;
 	turk_sort(&stack, &stack_b);
 	free_stack(&stack);

@@ -17,6 +17,7 @@ t_stack	*parse_values(char **input)
 	int		x;
 	int		count;
 	t_stack	*stack;
+	long	num;
 
 	count = 0;
 	stack = NULL;
@@ -25,8 +26,35 @@ t_stack	*parse_values(char **input)
 	x = count - 1;
 	while (x >= 1)
 	{
-		push(&stack, ft_atoi(input[x]));
+		if (ft_strlen(input[x]) > 11)
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_stack(&stack);
+			return (NULL);
+		}
+		num = ft_atoi(input[x]);
+		if (num < INT_MIN || num > INT_MAX || check_duplicate(stack, num))
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_stack(&stack);
+			return (NULL);
+		}
+		push(&stack, num);
 		x--;
 	}
 	return (stack);
+}
+
+int	check_duplicate(t_stack *stack, long num)
+{
+	t_stack	*temp;
+
+	temp = stack;
+	while (temp)
+	{
+		if (temp->number == num)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
 }

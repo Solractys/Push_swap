@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int			ft_atoi(const char *nptr);
+long		ft_atoi(const char *nptr);
 static int	ft_isspace(int c);
 
 static int	ft_isspace(int c)
@@ -23,11 +23,11 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	signal;
-	int	result;
+	int		i;
+	int		signal;
+	long	result;
 
 	i = 0;
 	signal = 1;

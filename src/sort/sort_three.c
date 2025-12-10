@@ -15,9 +15,9 @@
 
 int	check_three(t_stack **stack)
 {
-	int	top;
-	int	mid;
-	int	down;
+	long	top;
+	long	mid;
+	long	down;
 
 	top = (*stack)->index;
 	mid = (*stack)->next->index;
@@ -34,9 +34,9 @@ int	check_three(t_stack **stack)
 
 void	sort_three(t_stack **stack)
 {
-	int	a;
-	int	b;
-	int	c;
+	long	a;
+	long	b;
+	long	c;
 
 	a = (*stack)->index;
 	b = (*stack)->next->index;

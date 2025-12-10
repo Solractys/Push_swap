@@ -37,5 +37,7 @@ int	main(int argc, char **argv)
 	stack = parse_values(argv);
 	stack_b = NULL;
 	turk_sort(&stack, &stack_b);
+	free_stack(&stack);
+	free_stack(&stack_b);
 	return (0);
 }

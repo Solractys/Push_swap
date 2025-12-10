@@ -35,39 +35,19 @@ void	push(t_stack **stack, int number)
 	*stack = new_node;
 }
 
-t_stack	*pop(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
+	t_stack	*current;
 
-	if (*stack == NULL)
-		return (NULL);
-	temp = *stack;
-	*stack = (*stack)->next;
-	temp->next = NULL;
-	return (temp);
-}
-
-void	show_stack(t_stack *node, int stack_id)
-{
-	t_stack	*temp;
-
-	temp = node;
-	while (temp != NULL)
+	if (stack == NULL || *stack == NULL)
+		return ;
+	current = *stack;
+	while (current != NULL)
 	{
-		if (stack_id == 1)
-		{
-			ft_printf("STACK A -> ");
-			ft_printf("\nnumber:%d | index: %d | position: %d\n",
-				temp->number, temp->index, temp->position);
-		}
-		else if (stack_id == 2)
-		{
-			ft_printf("STACK B -> ");
-			ft_printf("\nnumber:%d | index: %d |\
-				position: %d | target_postion: %d | cost_b: %d | cost_a: %d \n",
-				temp->number, temp->index, temp->position,
-				temp->target_position, temp->cost_b, temp->cost_a);
-		}
-		temp = temp->next;
+		temp = current->next;
+		free(current);
+		current = temp;
 	}
+	*stack = NULL;
 }

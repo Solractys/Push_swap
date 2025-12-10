@@ -20,6 +20,7 @@ t_stack	*create(int number);
 void	push(t_stack **node, int number);
 t_stack	*pop(t_stack **node);
 void	show_stack(t_stack *node, int stack_id);
+void	free_stack(t_stack **stack);
 // MOVEMENTS
 void	swap(t_stack **node);
 void	push_to(t_stack **org, t_stack **dest);

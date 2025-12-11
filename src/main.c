@@ -12,21 +12,21 @@
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv) {
+int	main(int argc, char **argv)
+{
 	int		x;
 	t_stack	*stack;
+	int		flag;
 	char	**inputs;
 
+	
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	// if (!validate_input(argv[1])) {
-	// 	ft_putstr_fd("Error\n", 2);
-	// 	return (0);
-	// }
 	x = 1;
+	flag = 0;
 	while (argv[x] != NULL)
 	{
 		if (!validate_input(argv[x]))
@@ -40,6 +40,7 @@ int	main(int argc, char **argv) {
 	{
 		inputs = ft_split(argv[1], ' ');
 		stack = parse_values(inputs);
+		flag = 1;
 	}
 	else
 	{
@@ -57,5 +58,12 @@ int	main(int argc, char **argv) {
 	}
 	sort_func(&stack);
 	free_stack(&stack);
+	if (flag)
+	{
+		int count = 0;
+		while (inputs[count] != NULL)
+			free(inputs[count++]);
+		free(inputs);
+	}
 	return (0);
 }

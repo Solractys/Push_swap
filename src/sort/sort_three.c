@@ -32,6 +32,38 @@ int	check_three(t_stack **stack)
 		return (0);
 }
 
+void	sort_three_by_number(t_stack **stack)
+{
+	long	a;
+	long	b;
+	long	c;
+
+	a = (*stack)->number;
+	b = (*stack)->next->number;
+	c = (*stack)->next->next->number;
+	if (a > b && a > c)
+	{
+		rotate(stack);
+		ft_printf("ra\n");
+		a = (*stack)->number;
+		b = (*stack)->next->number;
+		c = (*stack)->next->next->number;
+	}
+	if (b > a && b > c)
+	{
+		reverse_rotate(stack);
+		ft_printf("rra\n");
+		a = (*stack)->number;
+		b = (*stack)->next->number;
+		c = (*stack)->next->next->number;
+	}
+	if (a > b)
+	{
+		swap(stack);
+		ft_printf("sa\n");
+	}
+}
+
 void	sort_three(t_stack **stack)
 {
 	long	a;

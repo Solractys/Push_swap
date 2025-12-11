@@ -33,7 +33,13 @@ t_stack	*parse_values(char **input)
 			return (NULL);
 		}
 		num = ft_atoi(input[x]);
-		if (num < INT_MIN || num > INT_MAX || check_duplicate(stack, num))
+		if (num < INT_MIN || num > INT_MAX)
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_stack(&stack);
+			return (NULL);
+		}
+		if( check_duplicate(stack, num))
 		{
 			ft_putstr_fd("Error\n", 2);
 			free_stack(&stack);
@@ -62,13 +68,15 @@ int	check_duplicate(t_stack *stack, long num)
 int	check_sorted(t_stack *stack)
 {
 	t_stack	*temp;
+	long	num;
 
 	if (stack == NULL)
 		return (1);
 	temp = stack;
+	num = temp->number;
 	while (temp->next)
 	{
-		if (temp->number > temp->next->number)
+		if (num > temp->next->number)
 			return (0);
 		temp = temp->next;
 	}

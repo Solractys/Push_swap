@@ -16,11 +16,13 @@ void	sort_func(t_stack **stack)
 {
 	int		count;
 	t_stack	*temp;
+	t_stack	*stack_b;
 
 	if (stack == NULL)
 		return ;
 	count = 0;
 	temp = *stack;
+	stack_b = NULL;
 	while (temp != NULL)
 	{
 		count++;
@@ -33,9 +35,9 @@ void	sort_func(t_stack **stack)
 	}
 	else if (count == 3)
 	{
-		while (check_three(stack) == 0)
-			sort_three(stack);
+		while (check_sorted(*stack) == 0)
+			sort_three_by_number(stack);
 	}
 	else
-		turk_sort(stack, NULL);
+		turk_sort(stack, &stack_b);
 }

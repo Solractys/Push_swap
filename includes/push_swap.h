@@ -4,7 +4,7 @@
 # include "gnl/get_next_line.h"
 # include "ft_printf/ft_printf.h"
 # define INT_MAX 2147483647
-# define INT_MIN -2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_stack
 {
@@ -36,6 +36,7 @@ int	check_sorted(t_stack *stack);
 int check_two(t_stack **stack);
 void sort_two(t_stack **stack);
 int	check_three(t_stack **stack);
+void	sort_three_by_number(t_stack **stack);
 void	sort_three(t_stack **stack);
 void sort_func(t_stack **stack);
 // index system

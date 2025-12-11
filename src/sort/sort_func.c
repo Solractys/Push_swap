@@ -36,4 +36,6 @@ void	sort_func(t_stack **stack)
 		while (check_three(stack) == 0)
 			sort_three(stack);
 	}
+	else
+		turk_sort(stack, NULL);
 }

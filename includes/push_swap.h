@@ -31,6 +31,7 @@ void	reverse_rotate_both(t_stack **stack_A, t_stack **stack_B);
 t_stack	*parse_values(char **input);
 int	validate_input(char *inputs);
 int	check_duplicate(t_stack *stack, long num);
+int	check_sorted(t_stack *stack);
 //SORTING
 int check_two(t_stack **stack);
 void sort_two(t_stack **stack);

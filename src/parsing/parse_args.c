@@ -24,7 +24,7 @@ t_stack	*parse_values(char **input)
 	while (input[count])
 		count++;
 	x = count - 1;
-	while (x >= 1)
+	while (x >= 0)
 	{
 		if (ft_strlen(input[x]) > 11)
 		{
@@ -57,4 +57,20 @@ int	check_duplicate(t_stack *stack, long num)
 		temp = temp->next;
 	}
 	return (0);
+}
+
+int	check_sorted(t_stack *stack)
+{
+	t_stack	*temp;
+
+	if (stack == NULL)
+		return (1);
+	temp = stack;
+	while (temp->next)
+	{
+		if (temp->number > temp->next->number)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }

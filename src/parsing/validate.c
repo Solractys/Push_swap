@@ -21,7 +21,7 @@ int	validate_input(char *inputs)
 		return (0);
 	while (inputs[y])
 	{
-		if (inputs[y] == '+' || inputs[y] == '-')
+		if (inputs[y] == '+' || inputs[y] == '-' || inputs[y] == ' ')
 		{
 			y++;
 			continue ;

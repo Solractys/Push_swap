@@ -12,18 +12,21 @@
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
-{
+int	main(int argc, char **argv) {
 	int		x;
 	t_stack	*stack;
-	t_stack	*stack_b;
+	char	**inputs;
 
-	x = 1;
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
+	// if (!validate_input(argv[1])) {
+	// 	ft_putstr_fd("Error\n", 2);
+	// 	return (0);
+	// }
+	x = 1;
 	while (argv[x] != NULL)
 	{
 		if (!validate_input(argv[x]))
@@ -33,12 +36,26 @@ int	main(int argc, char **argv)
 		}
 		x++;
 	}
-	stack = NULL;
-	stack = parse_values(argv);
-	if (stack == NULL)
+	if (argc == 2 && !(argv[1][0] == '\0'))
+	{
+		inputs = ft_split(argv[1], ' ');
+		stack = parse_values(inputs);
+	}
+	else
+	{
+		stack = parse_values(&argv[1]);
+		if (stack == NULL)
+		{
+			free_stack(&stack);
+			return (0);
+		}
+	}
+	if (check_sorted(stack))
+	{
+		free_stack(&stack);
 		return (0);
-	stack_b = NULL;
-	turk_sort(&stack, &stack_b);
+	}
+	sort_func(&stack);
 	free_stack(&stack);
 	return (0);
 }

@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk.c                                             :+:      :+:    :+:   */
+/*   check_duplicate_signals.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 07:28:04 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/11 21:29:37 by csilva-s         ###   ########.fr       */
+/*   Created: 2025/12/11 21:29:20 by csilva-s          #+#    #+#             */
+/*   Updated: 2025/12/11 21:36:02 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	turk_sort(t_stack **stack_a, t_stack **stack_b)
+int	check_duplicate_signals(char *elem)
 {
-	index_stack(*stack_a);
-	push_all(stack_a, stack_b);
-	sort_three(stack_a);
-	push_back_to_a(stack_a, stack_b);
-	final_rotate(stack_a);
+	int	i;
+	
+	i = 0;
+	while (elem[i])
+	{
+		if (elem[i] == '+' || elem[i] == '-')
+		{
+			if (i + 1 < (int)ft_strlen(elem))
+			{
+				if (elem[i + 1] == '+' || elem[i + 1] == '-')
+					return (1);
+			}
+		}
+		i++;
+	}
+	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_values.c                                     :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 07:28:04 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/01 22:21:24 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:33:21 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ t_stack	*parse_values(char **input)
 			return (NULL);
 		}
 		if( check_duplicate(stack, num))
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_stack(&stack);
+			return (NULL);
+		}
+		if (check_duplicate_signals(input[x]))
 		{
 			ft_putstr_fd("Error\n", 2);
 			free_stack(&stack);

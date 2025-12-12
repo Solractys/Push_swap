@@ -28,6 +28,7 @@ void	rotate_both(t_stack **stack_A, t_stack **stack_B);
 void	reverse_rotate(t_stack **stack);
 void	reverse_rotate_both(t_stack **stack_A, t_stack **stack_B);
 //VALIDATION
+int	check_duplicate_signals(char *elem);
 t_stack	*parse_values(char **input);
 int	validate_input(char *inputs);
 int	check_duplicate(t_stack *stack, long num);

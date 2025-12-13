@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 15:13:41 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/08 15:15:43 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/13 12:30:17 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,16 @@ void	push_all(t_stack **stack_a, t_stack **stack_b)
 	median = size / 2;
 	while (to_push > 0)
 	{
-		if ((*stack_a)->index < median)
+		if ((*stack_a)->index < median || !should_rotate(*stack_a, size))
 		{
 			push_to(stack_a, stack_b);
 			ft_printf("pb\n");
 			to_push--;
-		}
-		else if (should_rotate(*stack_a, size))
-		{
-			rotate(stack_a);
-			ft_printf("ra\n");
 		}
 		else
 		{
-			push_to(stack_a, stack_b);
-			to_push--;
-			ft_printf("pb\n");
+			rotate(stack_a);
+			ft_printf("ra\n");
 		}
 	}
 }

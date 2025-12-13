@@ -6,50 +6,49 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 15:03:47 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/08 15:14:51 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/13 12:43:34 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+static void	swap_values(long *a, long *b);
+
 long	*create_sorted_array(t_stack *stack, int size)
 {
 	int		i;
 	int		j;
-	long		*array;
-	t_stack	*current;
-	int		temp;
+	long	*array;
 
-	temp = 0;
 	array = malloc(sizeof(long) * size);
 	if (array == NULL)
 		return (NULL);
-	current = stack;
-	i = 0;
-	while (current != NULL)
+	i = -1;
+	while (++i < size && stack)
 	{
-		array[i] = current->number;
-		current = current->next;
-		i++;
+		array[i] = stack->number;
+		stack = stack->next;
 	}
-	i = 0;
-	j = 0;
-	while (i < size - 1)
+	i = -1;
+	while (++i < size - 1)
 	{
-		j = i + 1;
-		while (j < size)
+		j = i;
+		while (++j < size)
 		{
 			if (array[i] > array[j])
-			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
-			j++;
+				swap_values(&array[i], &array[j]);
 		}
-		i++;
 	}
 	return (array);
+}
+
+static void	swap_values(long *a, long *b)
+{
+	long	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
 void	assign_indices(t_stack *stack, long *sorted_array, int size)

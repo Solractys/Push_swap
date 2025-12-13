@@ -6,7 +6,7 @@
 /*   By: csilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 07:28:04 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/13 10:17:57 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/13 11:23:17 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	has_signal_middle(char *elem)
 static int	has_duplicate_signals(char *elem)
 {
 	int	i;
-	
+
 	i = 0;
 	while (elem[i])
 	{

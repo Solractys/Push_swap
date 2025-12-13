@@ -6,19 +6,19 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 09:49:55 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/12/13 11:18:10 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/12/13 11:22:19 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	free_input(char **inputs, int flag);
+static void		free_input(char **inputs, int flag);
 static t_stack	*parse_inputs(int argc, char **argv);
 
 void	push_swap(int argc, char **argv)
 {
 	t_stack	*stack;
-	
+
 	stack = parse_inputs(argc, argv);
 	if (stack == NULL)
 		return ;
@@ -52,7 +52,7 @@ static t_stack	*parse_inputs(int argc, char **argv)
 		if (stack == NULL)
 		{
 			free_stack(&stack);
-			return NULL;
+			return (NULL);
 		}
 	}
 	free_input(inputs, flag);
@@ -61,10 +61,10 @@ static t_stack	*parse_inputs(int argc, char **argv)
 
 static void	free_input(char **inputs, int flag)
 {
+	int	count;
+
 	if (flag)
 	{
-		int	count;
-
 		count = 0;
 		while (inputs[count] != NULL)
 			free(inputs[count++]);

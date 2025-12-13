@@ -1,77 +1,91 @@
-# Push Swap Planning
+*This project has been created as part of the 42 curriculum by csilva-s*
 
-Push Swap é um programa que ordena uma determinada [pilha](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) de dados. É simplesmente isso que o programa deve fazer.
+## Description
 
-## Detalhamento
+Push_swap is a sorting algorithm project that challenges you to sort a stack of integers using a limited set of operations and the smallest number of moves possible. The program uses two stacks (stack A and stack B) and a specific set of instructions to manipulate them.
 
-- O Programa deve receber um argumento (lista de números)
-- O Programa deve exibir uma mensagem de erro caso o argumento seja inválido
-- O Resultado do programa deve ser uma lista de instruções que servirão para ordenar a lista
-- Cada instrução deve ser acompanhada de um `\n` e nada mais
+The goal is to sort stack A in ascending order with the least amount of operations. Stack A starts with a random collection of integers, while stack B begins empty. The algorithm must be efficient, as the number of operations is evaluated and graded based on complexity.
 
-## Fluxo de Desenvolvimento
+This project develops skills in algorithm optimization, data structure manipulation, and computational complexity analysis.
 
-### Fase 1: Fundação
+## Instructions
 
-- [x] Implementar uma pilha usando listas encadeadas
-- [ ] Implementar o CRUD da stack
-- [ ] Implementar as 11 operações da Push Swap
-- [ ] Testar cada uma isoladamente
-- [ ] **Checkpoint 1:** Aqui será possível executar qualquer sequência manualmente
+### Compilation
 
-### Fase 2: Casos Triviais
+To compile the project, run:
+```bash
+make
+```
 
-- [ ] Implementar solução para 2 números
-- [ ] Implementar solução para 3 números
-- [ ] Implementar solução para 4 números
-- [ ] Implementar solução para 5 números
+This will generate the `push_swap` executable.
 
-### Fase 3: Validação
+Additional make rules:
+- `make clean` - removes object files
+- `make fclean` - removes object files and executables
+- `make re` - recompiles the entire project
 
-- [ ] Entender o Checker
+### Usage
 
-### Fase 4: Algoritmo Principal
+Run the program with a list of integers as arguments:
+```bash
+./push_swap 3 2 5 1 4
+```
 
-- [ ] Implementar a função que divide a pilha usando o pivô
-- [ ] Definir estratégia de divisão
-- [ ] Decidir: Recursivo ou em Chunks?
-- [ ] Implementar estratégia de reconstrução
-- [ ] **Checkpoint 2:** Aqui o código já ordena
+The program will output the series of operations needed to sort the stack.
 
-### Fase 5: Otimização
+### Valid Input
 
-- [ ] Diminuir o número de operações
-- [ ] Análise de complexidade básica
+- Only integers
+- No duplicates
+- Numbers must be within integer range
 
-### Fase 6: Testes
+### Available Operations
 
-- [ ] Bateria de testes completa
+| Operation | Description |
+|-----------|-------------|
+| `sa` | Swap the first two elements of stack A |
+| `sb` | Swap the first two elements of stack B |
+| `ss` | Execute `sa` and `sb` simultaneously |
+| `pa` | Move the first element of B to the top of A |
+| `pb` | Move the first element of A to the top of B |
+| `ra` | Rotate all elements of A up by one position |
+| `rb` | Rotate all elements of B up by one position |
+| `rr` | Execute `ra` and `rb` simultaneously |
+| `rra` | Rotate all elements of A down by one position |
+| `rrb` | Rotate all elements of B down by one position |
+| `rrr` | Execute `rra` and `rrb` simultaneously |
 
-## Conceitos Relacionados
+### Example
+```bash
+./push_swap 2 1 3
+```
+Output:
+```
+sa
+```
 
-- **Quick Sort:** Conceito de pivô
-- **Merge Sort:** Divisões de listas
-- **Insertion Sort:** Como inserir elementos na posição correta
+### Checker (Optional)
 
-## Operações Disponíveis
+If you have a checker program, you can verify the sorting:
+```bash
+./push_swap 3 2 1 | ./checker 3 2 1
+```
 
-| Operação | Descrição |
-|----------|-----------|
-| `sa` | Troca os dois primeiros elementos da pilha A |
-| `sb` | Troca os dois primeiros elementos da pilha B |
-| `ss` | Executa `sa` e `sb` simultaneamente |
-| `pa` | Move o primeiro elemento de B para o topo de A |
-| `pb` | Move o primeiro elemento de A para o topo de B |
-| `ra` | Rotaciona todos os elementos de A uma posição para cima |
-| `rb` | Rotaciona todos os elementos de B uma posição para cima |
-| `rr` | Executa `ra` e `rb` simultaneamente |
-| `rra` | Rotaciona todos os elementos de A uma posição para baixo |
-| `rrb` | Rotaciona todos os elementos de B uma posição para baixo |
-| `rrr` | Executa `rra` e `rrb` simultaneamente |
+## Resources
 
-## Metas de Performance
+### Documentation and Tutorials
 
-- **3 números:** Máximo 3 operações
-- **5 números:** Máximo 12 operações
-- **100 números:** Máximo ~700 operações
-- **500 números:** Máximo ~5500 operações
+- [Push Swap - Medium Article by Ayogun](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) - Comprehensive guide explaining the push_swap algorithm and implementation strategies
+- [My Journey to Find a Good Sorting Algorithm for Push Swap](https://m4nnb3ll.medium.com/my-journey-to-find-a-good-sorting-algorithm-for-the-push-swap-42-project-4a18bc38b474) - Detailed exploration of different sorting approaches and algorithm optimization
+- [Push Swap Visualization - YouTube](https://www.youtube.com/watch?v=GMV7ycKZ-mM) - Visual explanation of how the push_swap algorithm works
+
+### AI Usage
+
+AI (Claude by Anthropic) was used to assist with the following aspects of this project:
+
+- **README Documentation**: Structuring and formatting the README file, including writing clear descriptions and organizing sections
+- **Algorithm Understanding**: Clarifying concepts related to sorting algorithms and stack operations
+- **Code Review**: Discussing implementation approaches and potential optimizations
+- **Debugging Support**: Troubleshooting compilation issues and logical errors
+
+All core algorithm logic and implementation were developed independently, with AI serving as a learning and documentation tool.

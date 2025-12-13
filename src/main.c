@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	int		flag;
 	char	**inputs;
 
-	
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -54,6 +53,10 @@ int	main(int argc, char **argv)
 	if (check_sorted(stack))
 	{
 		free_stack(&stack);
+		int count = 0;
+		while (inputs[count] != NULL)
+			free(inputs[count++]);
+		free(inputs);
 		return (0);
 	}
 	sort_func(&stack);

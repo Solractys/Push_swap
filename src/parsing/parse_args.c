@@ -74,15 +74,13 @@ int	check_duplicate(t_stack *stack, long num)
 int	check_sorted(t_stack *stack)
 {
 	t_stack	*temp;
-	long	num;
 
 	if (stack == NULL)
 		return (1);
 	temp = stack;
-	num = temp->number;
 	while (temp->next)
 	{
-		if (num > temp->next->number)
+		if (temp->number > temp->next->number)
 			return (0);
 		temp = temp->next;
 	}

@@ -50,7 +50,7 @@ static int	validate_number(t_stack **stack, char *str, long num)
 		if (check_overflow(str))
 			return (0);
 	}
-	num = (int)ft_atoi(str);
+	num = ft_atoi(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	if (check_duplicate(*stack, num))

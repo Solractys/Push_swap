@@ -26,7 +26,7 @@ typedef struct s_stack
 	int					cost_a;
 	int					cost_b;
 	int					target_position;
-	struct t_stack		*next;
+	struct s_stack		*next;
 }	t_stack;
 // CRUD STACK
 t_stack	*create(long number);

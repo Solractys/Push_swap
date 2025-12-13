@@ -13,6 +13,7 @@
 #include "../../includes/push_swap.h"
 
 static int	validate_number(t_stack **stack, char *str, long num);
+static int	check_overflow(char *str);
 
 t_stack	*parse_values(char **input)
 {
@@ -45,13 +46,32 @@ t_stack	*parse_values(char **input)
 static int	validate_number(t_stack **stack, char *str, long num)
 {
 	if (ft_strlen(str) > 11)
-		return (0);
-	num = ft_atoi(str);
+	{
+		if (check_overflow(str))
+			return (0);
+	}
+	num = (int)ft_atoi(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	if (check_duplicate(*stack, num))
 		return (0);
 	return (1);
+}
+
+static int	check_overflow(char *str)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(str);
+	while (i < len - 11)
+	{
+		if (str[i] != '0' && str[i] != '-' && str[i] != '+')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	check_duplicate(t_stack *stack, long num)
